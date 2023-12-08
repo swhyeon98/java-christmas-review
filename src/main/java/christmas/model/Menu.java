@@ -2,6 +2,7 @@ package christmas.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Menu {
 
@@ -27,5 +28,11 @@ public class Menu {
         menus.add(new MenuItem("제로콜라", 3_000, Category.DRINK));
         menus.add(new MenuItem("레드와인", 60_000, Category.DRINK));
         menus.add(new MenuItem("샴페인", 25_000, Category.DRINK));
+    }
+
+    public Optional<MenuItem> findByName(String menuName) {
+        return menus.stream()
+                .filter(menu -> menu.getName().equalsIgnoreCase(menuName))
+                .findFirst();
     }
 }
