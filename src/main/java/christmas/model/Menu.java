@@ -35,4 +35,12 @@ public class Menu {
                 .filter(menu -> menu.getName().equalsIgnoreCase(menuName))
                 .findFirst();
     }
+
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (MenuItem menu : menus) {
+            totalPrice += menu.getPrice();
+        }
+        return totalPrice;
+    }
 }
