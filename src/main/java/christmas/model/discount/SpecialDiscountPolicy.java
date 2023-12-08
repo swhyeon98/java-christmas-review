@@ -29,7 +29,7 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
     public String getDiscountType() {
-        return null;
+        return "특별 할인";
     }
 
     private boolean isSpecialDay(LocalDate date) {
