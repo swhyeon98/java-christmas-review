@@ -46,4 +46,8 @@ public class Order {
         return orderItems.stream()
                 .anyMatch(orderItem -> orderItem.getMenuName().equals(menuName));
     }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
 }
