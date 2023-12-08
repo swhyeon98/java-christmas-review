@@ -3,8 +3,8 @@ package christmas.model.discount;
 import christmas.model.menu.Category;
 import christmas.model.menu.Menu;
 import christmas.model.menu.MenuItem;
-import christmas.model.Order;
-import christmas.model.OrderItem;
+import christmas.model.order.Order;
+import christmas.model.order.OrderItem;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

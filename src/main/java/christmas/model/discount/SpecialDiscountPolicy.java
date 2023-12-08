@@ -1,6 +1,6 @@
 package christmas.model.discount;
 
-import christmas.model.Order;
+import christmas.model.order.Order;
 
 import java.time.LocalDate;
 import java.util.HashSet;

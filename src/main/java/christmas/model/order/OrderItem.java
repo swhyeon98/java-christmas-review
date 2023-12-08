@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.order;
 
 public class OrderItem {
 

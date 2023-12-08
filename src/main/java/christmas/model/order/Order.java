@@ -1,4 +1,4 @@
-package christmas.model;
+package christmas.model.order;
 
 import christmas.model.menu.Menu;
 import christmas.model.menu.MenuItem;
