@@ -6,7 +6,7 @@ import christmas.model.MenuItem;
 import christmas.model.Order;
 
 import java.time.DayOfWeek;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class WeekdayDiscountPolicy implements DiscountPolicy {
 
@@ -17,11 +17,10 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public int discount(Order order, LocalDateTime date) {
+    public int discount(Order order, LocalDate date) {
         if (isWeekDay(date)) {
-            return calculateDiscount(order, Category.DESSERT);
+            return calculateDiscount(order);
         }
-
         return 0;
     }
 
@@ -30,15 +29,15 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
         return "평일 할인";
     }
 
-    private boolean isWeekDay(LocalDateTime date) {
+    private boolean isWeekDay(LocalDate date) {
         return date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.FRIDAY;
     }
 
-    private int calculateDiscount(Order order, Category category) {
+    private int calculateDiscount(Order order) {
         return order.getOrderItems().stream()
                 .filter(orderItem -> {
                     MenuItem menuItem = menu.findByName(orderItem.getMenuName()).orElse(null);
-                    return menuItem != null && menuItem.getCategory() == category;
+                    return menuItem != null && menuItem.getCategory() == Category.DESSERT;
                 })
                 .mapToInt(orderItem -> 2023 * orderItem.getQuantity())
                 .sum();
