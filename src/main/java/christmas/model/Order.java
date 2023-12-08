@@ -1,5 +1,8 @@
 package christmas.model;
 
+import christmas.model.menu.Menu;
+import christmas.model.menu.MenuItem;
+
 import java.util.ArrayList;
 import java.util.List;
 

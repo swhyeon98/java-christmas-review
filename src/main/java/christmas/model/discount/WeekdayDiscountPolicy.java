@@ -1,8 +1,8 @@
 package christmas.model.discount;
 
-import christmas.model.Category;
-import christmas.model.Menu;
-import christmas.model.MenuItem;
+import christmas.model.menu.Category;
+import christmas.model.menu.Menu;
+import christmas.model.menu.MenuItem;
 import christmas.model.Order;
 import christmas.model.OrderItem;
 
