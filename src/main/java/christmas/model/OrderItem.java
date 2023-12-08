@@ -28,6 +28,10 @@ public class OrderItem {
         }
     }
 
+    public String getMenuName() {
+        return menuName;
+    }
+
     @Override
     public String toString() {
         return menuName + " " + quantity + "개";
