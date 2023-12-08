@@ -19,6 +19,17 @@ public class Order {
         orderItems.add(new OrderItem(menuName, quantity));
     }
 
+    public int calculateTotalPrice() {
+        int totalPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            int itemPrice = menu.findByName(orderItem.getMenuName())
+                    .map(MenuItem::getPrice)
+                    .orElse(0);
+            totalPrice += itemPrice * orderItem.getQuantity();
+        }
+        return totalPrice;
+    }
+
     private void validateMenuName(String menuName) {
         if (menu.findByName(menuName).isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");

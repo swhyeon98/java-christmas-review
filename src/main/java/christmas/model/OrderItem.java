@@ -32,6 +32,10 @@ public class OrderItem {
         return menuName;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return menuName + " " + quantity + "개";
