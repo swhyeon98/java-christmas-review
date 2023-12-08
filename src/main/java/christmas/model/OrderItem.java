@@ -7,6 +7,7 @@ public class OrderItem {
 
     public OrderItem(String menuName, int quantity) {
         this.menuName = menuName;
+        validateQuantity(quantity);
         this.quantity = quantity;
     }
 
@@ -25,5 +26,10 @@ public class OrderItem {
         if (quantity < 1) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return menuName + " " + quantity + "개";
     }
 }
