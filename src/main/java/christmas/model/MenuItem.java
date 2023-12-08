@@ -1,12 +1,12 @@
 package christmas.model;
 
-public class Menu {
+public class MenuItem {
 
     private final String name;
     private final int price;
     private final Category category;
 
-    public Menu(String name, int price, Category category) {
+    public MenuItem(String name, int price, Category category) {
         this.name = name;
         this.price = price;
         this.category = category;
