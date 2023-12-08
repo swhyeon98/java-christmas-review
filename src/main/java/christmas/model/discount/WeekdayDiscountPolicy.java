@@ -4,6 +4,7 @@ import christmas.model.Category;
 import christmas.model.Menu;
 import christmas.model.MenuItem;
 import christmas.model.Order;
+import christmas.model.OrderItem;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -34,12 +35,20 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
     }
 
     private int calculateDiscount(Order order) {
-        return order.getOrderItems().stream()
-                .filter(orderItem -> {
-                    MenuItem menuItem = menu.findByName(orderItem.getMenuName()).orElse(null);
-                    return menuItem != null && menuItem.getCategory() == Category.DESSERT;
-                })
-                .mapToInt(orderItem -> 2023 * orderItem.getQuantity())
-                .sum();
+        int totalDiscount = 0;
+        for (OrderItem orderItem : order.getOrderItems()) {
+            if (isDessert(orderItem)) {
+                totalDiscount += 2023 * orderItem.getQuantity();
+            }
+        }
+        return totalDiscount;
+    }
+
+    private boolean isDessert(OrderItem orderItem) {
+        MenuItem menuItem = menu.findByName(orderItem.getMenuName()).orElse(null);
+        if (menuItem != null && menuItem.getCategory() == Category.DESSERT) {
+            return true;
+        }
+        return false;
     }
 }
