@@ -18,7 +18,7 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public int discount(Order order, LocalDateTime date) {
-        if (date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.FRIDAY) {
+        if (isWeekDay(date)) {
             return calculateDiscount(order, Category.DESSERT);
         }
 
@@ -28,6 +28,10 @@ public class WeekdayDiscountPolicy implements DiscountPolicy {
     @Override
     public String getDiscountType() {
         return "평일 할인";
+    }
+
+    private boolean isWeekDay(LocalDateTime date) {
+        return date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.FRIDAY;
     }
 
     private int calculateDiscount(Order order, Category category) {
